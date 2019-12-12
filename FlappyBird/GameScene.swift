@@ -38,6 +38,8 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bird.physicsBody?.affectedByGravity = true
+
         self.bird.run(repeatActionbird)
 
         bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
