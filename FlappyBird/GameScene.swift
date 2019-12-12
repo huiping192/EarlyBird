@@ -17,6 +17,8 @@ class GameScene: SKScene {
 
     let objetctFactory = ObjectFactory()
     
+    var repeatActionbird = SKAction()
+
     
     override func didMove(to view: SKView) {
         createScene()
@@ -36,7 +38,10 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        self.bird.run(repeatActionbird)
+
+        bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -97,7 +102,7 @@ extension GameScene {
         self.addChild(bird)
         
         //ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
-//        let animatebird = SKAction.animate(with: self.birdSprites, timePerFrame: 0.1)
-//        self.repeatActionbird = SKAction.repeatForever(animatebird)
+        let animatebird = SKAction.animate(with: self.birdSprites, timePerFrame: 0.1)
+        self.repeatActionbird = SKAction.repeatForever(animatebird)
     }
 }
