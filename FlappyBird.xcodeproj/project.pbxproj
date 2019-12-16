@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7DAB120523A2400600D50F83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB120423A2400600D50F83 /* AppDelegate.swift */; };
-		7DAB120923A2400600D50F83 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7DAB120823A2400600D50F83 /* Actions.sks */; };
 		7DAB120B23A2400600D50F83 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB120A23A2400600D50F83 /* GameScene.swift */; };
 		7DAB120D23A2400600D50F83 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB120C23A2400600D50F83 /* GameViewController.swift */; };
 		7DAB121023A2400600D50F83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAB120E23A2400600D50F83 /* Main.storyboard */; };
@@ -20,7 +19,6 @@
 /* Begin PBXFileReference section */
 		7DAB120123A2400600D50F83 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAB120423A2400600D50F83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7DAB120823A2400600D50F83 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		7DAB120A23A2400600D50F83 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		7DAB120C23A2400600D50F83 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7DAB120F23A2400600D50F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				7DAB120423A2400600D50F83 /* AppDelegate.swift */,
-				7DAB120823A2400600D50F83 /* Actions.sks */,
 				7DAB120A23A2400600D50F83 /* GameScene.swift */,
 				7DAB120C23A2400600D50F83 /* GameViewController.swift */,
 				7DAB120E23A2400600D50F83 /* Main.storyboard */,
@@ -134,7 +131,6 @@
 				7DAB121023A2400600D50F83 /* Main.storyboard in Resources */,
 				7DAB121223A2400700D50F83 /* Assets.xcassets in Resources */,
 				7DAB121523A2400700D50F83 /* LaunchScreen.storyboard in Resources */,
-				7DAB120923A2400600D50F83 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
