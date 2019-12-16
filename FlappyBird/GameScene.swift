@@ -11,13 +11,27 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    // view object
     var bird = SKSpriteNode()
     let birdAtlas = SKTextureAtlas(named:"player")
     var birdSprites = [SKTexture]()
 
-    let objetctFactory = ObjectFactory()
+        
     
+    // action
     var repeatActionbird = SKAction()
+    
+    
+    // state
+    var gameStarted = false
+    var birdIsDied = false
+    
+    
+    var score = 0
+
+    // other
+    let objetctFactory = ObjectFactory()
+
 
     
     override func didMove(to view: SKView) {
@@ -38,13 +52,15 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        bird.physicsBody?.affectedByGravity = true
-
-        self.bird.run(repeatActionbird)
-
-        bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
+        if !gameStarted {
+            gameStarted = true
+            startGame()
+            return
+        }
+        
+        
     }
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
@@ -69,6 +85,26 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didEnd(_ contact: SKPhysicsContact) {
         
+    }
+}
+
+extension GameScene {
+    func startGame() {
+        bird.physicsBody?.affectedByGravity = true
+
+        self.bird.run(repeatActionbird)
+
+        bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
+    }
+    
+    func restartScene(){
+        self.removeAllChildren()
+        self.removeAllActions()
+        birdIsDied = false
+        gameStarted = false
+        score = 0
+        createScene()
     }
 }
 
