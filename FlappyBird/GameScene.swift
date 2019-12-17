@@ -87,13 +87,48 @@ class GameScene: SKScene {
     }
 }
 
+// 衝突
 extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
+        let bodyA = contact.bodyA
+        let bodyB = contact.bodyB
+        
+        if bodyA.categoryBitMask == CollisionBitMask.bird && bodyB.categoryBitMask == CollisionBitMask.ground {
+            gameOver()
+            return
+        }
+        
+        if bodyA.categoryBitMask == CollisionBitMask.ground && bodyB.categoryBitMask == CollisionBitMask.bird {
+            gameOver()
+            return
+        }
+        
+        
+        if bodyA.categoryBitMask == CollisionBitMask.bird && bodyB.categoryBitMask == CollisionBitMask.flower {
+            addScore()
+            bodyB.node?.removeFromParent()
+            return
+        }
+        
+        if bodyA.categoryBitMask == CollisionBitMask.flower && bodyB.categoryBitMask == CollisionBitMask.bird {
+            addScore()
+            bodyA.node?.removeFromParent()
+            return
+        }
+         
         
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
+        
+    }
+    
+    private func gameOver() {
+        
+    }
+    
+    private func addScore() {
         
     }
 }
@@ -105,6 +140,11 @@ extension GameScene {
         self.bird.run(repeatActionbird)
 
         doBirdFly()
+        
+        
+        let a = objetctFactory.createFlower(point: CGPoint(x:self.frame.midX + 50, y:self.frame.midY))
+        
+        self.addChild(a)
     }
     
     func doBirdFly() {
@@ -125,10 +165,11 @@ extension GameScene {
 
 extension GameScene {
     func createScene() {
+        self.name = "area"
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-        self.physicsBody?.categoryBitMask = CollisionBitMask.groundCategory
-        self.physicsBody?.collisionBitMask = CollisionBitMask.birdCategory
-        self.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
+        self.physicsBody?.categoryBitMask = CollisionBitMask.ground
+        self.physicsBody?.collisionBitMask = CollisionBitMask.bird
+        self.physicsBody?.contactTestBitMask = CollisionBitMask.bird
         self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = false
         
