@@ -27,8 +27,25 @@ class GameScene: SKScene {
     var birdIsDied = false
     
     
-    var score = 0
+    // timer
+    var counterLbl = SKLabelNode()
 
+    var countdown = 30 {
+        didSet {
+            counterLbl.text = "\(countdown)"
+        }
+    }
+    var timer: Timer?
+    
+    
+    // score
+    var score = 0 {
+        didSet {
+            scoreLbl.text = "\(score)"
+        }
+    }
+    var scoreLbl = SKLabelNode()
+    
     // other
     let objetctFactory = ObjectFactory()
 
@@ -36,7 +53,19 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.makeCountdown()
+        }
+        
         createScene()
+    }
+    
+    func makeCountdown() {
+        self.countdown -= 1
+        
+        if self.countdown <= 0 {
+            self.gameOver()
+        }
     }
     
     
@@ -59,8 +88,9 @@ class GameScene: SKScene {
             return
         }
         
-        doBirdFly()
-        
+        if !birdIsDied {
+            doBirdFly()
+        }
     }
     
     
@@ -96,12 +126,12 @@ extension GameScene: SKPhysicsContactDelegate {
         let bodyB = contact.bodyB
         
         if bodyA.categoryBitMask == CollisionBitMask.bird && bodyB.categoryBitMask == CollisionBitMask.ground {
-            gameOver()
+            //gameOver()
             return
         }
         
         if bodyA.categoryBitMask == CollisionBitMask.ground && bodyB.categoryBitMask == CollisionBitMask.bird {
-            gameOver()
+            //gameOver()
             return
         }
         
@@ -126,11 +156,17 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     private func gameOver() {
+        birdIsDied = true
+
+        self.bird.removeAllActions()
         
+        timer?.invalidate()
+        
+        showResult()
     }
     
     private func addScore() {
-        
+        score += 1
     }
 }
 
@@ -143,8 +179,10 @@ extension GameScene {
         doBirdFly()
         
         createFlows()
+        
+        
+        timer?.fire()
     }
-    
     
     private func createFlows() {
         let spawn = SKAction.run {
@@ -217,5 +255,19 @@ extension GameScene {
         //ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
         let animatebird = SKAction.animate(with: self.birdSprites, timePerFrame: 0.1)
         self.repeatActionbird = SKAction.repeatForever(animatebird)
+        
+        scoreLbl = objetctFactory.createScoreLabel(point: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 2.6))
+        scoreLbl.text = "\(score)"
+        self.addChild(scoreLbl)
+        
+        
+        counterLbl = objetctFactory.createCounterLabel(point: CGPoint(x: self.frame.width - 50, y: self.frame.height - 30))
+        counterLbl.text = "\(countdown)"
+        self.addChild(counterLbl)
+    }
+    
+    
+    func showResult() {
+        
     }
 }

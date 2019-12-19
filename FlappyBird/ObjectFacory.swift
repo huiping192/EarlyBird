@@ -51,4 +51,35 @@ struct ObjectFactory {
         
         return flowerNode
     }
+    
+    func createScoreLabel(point: CGPoint) -> SKLabelNode {
+        let scoreLbl = SKLabelNode()
+        scoreLbl.position = point
+        scoreLbl.text = ""
+        scoreLbl.zPosition = 5
+        scoreLbl.fontSize = 50
+        scoreLbl.fontName = "HelveticaNeue-Bold"
+        
+        let scoreBg = SKShapeNode()
+        scoreBg.position = CGPoint(x: 0, y: 0)
+        scoreBg.path = CGPath(roundedRect: CGRect(x: CGFloat(-50), y: CGFloat(-30), width: CGFloat(100), height: CGFloat(100)), cornerWidth: 50, cornerHeight: 50, transform: nil)
+        let scoreBgColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: CGFloat(0.2))
+        scoreBg.strokeColor = UIColor.clear
+        scoreBg.fillColor = scoreBgColor
+        scoreBg.zPosition = -1
+        scoreLbl.addChild(scoreBg)
+        return scoreLbl
+    }
+    
+    
+    func createCounterLabel(point: CGPoint) -> SKLabelNode {
+        let counterLabel = SKLabelNode()
+        counterLabel.position = point
+        counterLabel.text = ""
+        counterLabel.zPosition = 5
+        counterLabel.fontSize = 20
+        counterLabel.fontName = "HelveticaNeue-Bold"
+        
+        return counterLabel
+    }
 }
