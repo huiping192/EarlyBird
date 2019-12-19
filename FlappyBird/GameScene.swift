@@ -20,8 +20,6 @@ class GameScene: SKScene {
 
         
     // sound
-    let bgmSound = SKAction.playSoundFileNamed("bgm", waitForCompletion: false)
-
     let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
     
     // action
@@ -64,7 +62,6 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
-        self.run(bgmSound)
         createScene()
     }
     
@@ -177,6 +174,7 @@ extension GameScene: SKPhysicsContactDelegate {
         birdIsDied = true
 
         self.bird.removeAllActions()
+        self.removeAllActions()
         
         enumerateChildNodes(withName: "flower", using: ({
             (node, error) in
