@@ -19,6 +19,10 @@ class GameScene: SKScene {
     var birdSprites = [SKTexture]()
 
         
+    // sound
+    let bgmSound = SKAction.playSoundFileNamed("bgm", waitForCompletion: false)
+
+    let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
     
     // action
     var repeatActionbird = SKAction()
@@ -60,6 +64,7 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
+        self.run(bgmSound)
         createScene()
     }
     
@@ -193,6 +198,7 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     private func addScore() {
+        run(coinSound)
         score += 1
     }
 }

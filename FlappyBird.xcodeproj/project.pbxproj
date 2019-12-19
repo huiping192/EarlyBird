@@ -14,6 +14,8 @@
 		7DAB121223A2400700D50F83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DAB121123A2400700D50F83 /* Assets.xcassets */; };
 		7DAB121523A2400700D50F83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAB121323A2400700D50F83 /* LaunchScreen.storyboard */; };
 		7DAB121D23A2488200D50F83 /* ObjectFacory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB121C23A2488200D50F83 /* ObjectFacory.swift */; };
+		7DF5688923AB8EF0003E6548 /* CoinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF5688823AB8EF0003E6548 /* CoinSound.mp3 */; };
+		7DF5688D23AB90EB003E6548 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF5688C23AB90EB003E6548 /* bgm.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7DAB121423A2400700D50F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DAB121623A2400700D50F83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DAB121C23A2488200D50F83 /* ObjectFacory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectFacory.swift; sourceTree = "<group>"; };
+		7DF5688823AB8EF0003E6548 /* CoinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CoinSound.mp3; sourceTree = "<group>"; };
+		7DF5688C23AB90EB003E6548 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				7DAB120E23A2400600D50F83 /* Main.storyboard */,
 				7DAB121123A2400700D50F83 /* Assets.xcassets */,
 				7DAB121323A2400700D50F83 /* LaunchScreen.storyboard */,
+				7DF5688C23AB90EB003E6548 /* bgm.mp3 */,
+				7DF5688823AB8EF0003E6548 /* CoinSound.mp3 */,
 				7DAB121623A2400700D50F83 /* Info.plist */,
 				7DAB121C23A2488200D50F83 /* ObjectFacory.swift */,
 			);
@@ -129,8 +135,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DAB121023A2400600D50F83 /* Main.storyboard in Resources */,
+				7DF5688923AB8EF0003E6548 /* CoinSound.mp3 in Resources */,
 				7DAB121223A2400700D50F83 /* Assets.xcassets in Resources */,
 				7DAB121523A2400700D50F83 /* LaunchScreen.storyboard in Resources */,
+				7DF5688D23AB90EB003E6548 /* bgm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
