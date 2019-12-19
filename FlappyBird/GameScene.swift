@@ -9,6 +9,8 @@
 import SpriteKit
 import GameplayKit
 
+let defaultCountdown = 10
+
 class GameScene: SKScene {
     
     // view object
@@ -30,7 +32,7 @@ class GameScene: SKScene {
     // timer
     var counterLbl = SKLabelNode()
 
-    var countdown = 10 {
+    var countdown = defaultCountdown {
         didSet {
             counterLbl.text = "\(countdown)"
         }
@@ -45,6 +47,11 @@ class GameScene: SKScene {
         }
     }
     var scoreLbl = SKLabelNode()
+    
+    
+    // button
+    var resetButtton = SKSpriteNode()
+    
     
     // other
     let objetctFactory = ObjectFactory()
@@ -87,6 +94,16 @@ class GameScene: SKScene {
         if !birdIsDied {
             doBirdFly()
         }
+        
+        for touch in touches{
+            let location = touch.location(in: self)
+            if birdIsDied == true {
+                if resetButtton.contains(location){
+                    restartScene()
+                }
+            }
+        }
+        
     }
     
     
@@ -164,7 +181,15 @@ extension GameScene: SKPhysicsContactDelegate {
         
         timer?.invalidate()
         
+        showResetButton()
+        
         showResult()
+    }
+    
+    private func showResetButton() {
+        resetButtton = objetctFactory.createRestartBtn(point: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2))
+        
+        self.addChild(resetButtton)
     }
     
     private func addScore() {
@@ -219,6 +244,7 @@ extension GameScene {
         birdIsDied = false
         gameStarted = false
         score = 0
+        countdown = defaultCountdown
         createScene()
     }
 }

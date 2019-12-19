@@ -84,4 +84,15 @@ struct ObjectFactory {
         
         return counterLabel
     }
+    
+    func createRestartBtn(point: CGPoint) -> SKSpriteNode {
+        let restartBtn = SKSpriteNode(imageNamed: "restart")
+        restartBtn.size = CGSize(width:100, height:100)
+        restartBtn.position = point
+        restartBtn.zPosition = 6
+        restartBtn.setScale(0)
+        restartBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        
+        return restartBtn
+    }
 }
