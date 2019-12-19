@@ -38,6 +38,8 @@ struct ObjectFactory {
     
     func createFlower(point: CGPoint) -> SKNode  {
         let flowerNode = SKSpriteNode(imageNamed: "flower")
+        flowerNode.name = "flower"
+
         flowerNode.size = CGSize(width: 40, height: 40)
         flowerNode.position = point
         flowerNode.physicsBody = SKPhysicsBody(rectangleOf: flowerNode.size)

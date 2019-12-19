@@ -30,7 +30,7 @@ class GameScene: SKScene {
     // timer
     var counterLbl = SKLabelNode()
 
-    var countdown = 30 {
+    var countdown = 10 {
         didSet {
             counterLbl.text = "\(countdown)"
         }
@@ -53,10 +53,6 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.makeCountdown()
-        }
-        
         createScene()
     }
     
@@ -160,6 +156,12 @@ extension GameScene: SKPhysicsContactDelegate {
 
         self.bird.removeAllActions()
         
+        enumerateChildNodes(withName: "flower", using: ({
+            (node, error) in
+            node.speed = 0
+            self.removeAllActions()
+        }))
+        
         timer?.invalidate()
         
         showResult()
@@ -180,8 +182,9 @@ extension GameScene {
         
         createFlows()
         
-        
-        timer?.fire()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.makeCountdown()
+        }
     }
     
     private func createFlows() {
