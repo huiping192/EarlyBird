@@ -32,6 +32,7 @@ class GameScene: SKScene {
     // other
     let objetctFactory = ObjectFactory()
 
+    var moveAndRemove = SKAction()
 
     
     override func didMove(to view: SKView) {
@@ -141,10 +142,29 @@ extension GameScene {
 
         doBirdFly()
         
+        createFlows()
+    }
+    
+    
+    private func createFlows() {
+        let spawn = SKAction.run {
+            
+            let a = Int.random(in: 20 ..< Int(self.frame.maxY - 20))
+            let flow = self.objetctFactory.createFlower(point: CGPoint(x:self.frame.maxX + 40, y: CGFloat(a)))
+            self.addChild(flow)
+            
+            flow.run(self.moveAndRemove)
+        }
         
-        let a = objetctFactory.createFlower(point: CGPoint(x:self.frame.midX + 50, y:self.frame.midY))
+        let delay = SKAction.wait(forDuration: 1.5)
+        let SpawnDelay = SKAction.sequence([spawn, delay])
+        let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
+        self.run(spawnDelayForever)
         
-        self.addChild(a)
+        let distance = CGFloat(self.frame.width + 40)
+        let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
+        let removePipes = SKAction.removeFromParent()
+        moveAndRemove = SKAction.sequence([movePipes, removePipes])
     }
     
     func doBirdFly() {
