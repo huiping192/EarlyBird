@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-let defaultCountdown = 10
+let defaultCountdown = 60
 
 class GameScene: SKScene {
     
@@ -218,7 +218,6 @@ extension GameScene {
     
     private func createFlows() {
         let spawn = SKAction.run {
-            
             let a = Int.random(in: 20 ..< Int(self.frame.maxY - 20))
             let flow = self.objetctFactory.createFlower(point: CGPoint(x:self.frame.maxX + 40, y: CGFloat(a)))
             self.addChild(flow)
@@ -226,13 +225,13 @@ extension GameScene {
             flow.run(self.moveAndRemove)
         }
         
-        let delay = SKAction.wait(forDuration: 1.5)
+        let delay = SKAction.wait(forDuration: 0.5)
         let SpawnDelay = SKAction.sequence([spawn, delay])
         let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
         self.run(spawnDelayForever)
         
         let distance = CGFloat(self.frame.width + 40)
-        let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
+        let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.006 * distance))
         let removePipes = SKAction.removeFromParent()
         moveAndRemove = SKAction.sequence([movePipes, removePipes])
     }
