@@ -184,6 +184,8 @@ extension GameScene: SKPhysicsContactDelegate {
         
         timer?.invalidate()
         
+        Score.registerScore(score)
+        
         showResetButton()
         
         showResult()
