@@ -35,6 +35,14 @@ struct ObjectFactory {
         return bird
     }
     
+    func createGoldFlower(point: CGPoint) -> SKNode {
+        let a = createFlower(point: point) as! SKSpriteNode
+        
+        a.color = UIColor.yellow
+        a.colorBlendFactor = 1.0
+        
+        return a
+    }
     
     func createFlower(point: CGPoint) -> SKNode  {
         let flowerNode = SKSpriteNode(imageNamed: "flower")

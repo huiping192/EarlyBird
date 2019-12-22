@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7D101F2B23AC6FCD009140F7 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D101F2A23AC6FCD009140F7 /* Score.swift */; };
+		7DAA6F3323AF292A0005EBDD /* NormalFlowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA6F3223AF292A0005EBDD /* NormalFlowerNode.swift */; };
+		7DAA6F3523AF29370005EBDD /* FlowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA6F3423AF29370005EBDD /* FlowerNode.swift */; };
+		7DAA6F3723AF29570005EBDD /* GoldFlowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA6F3623AF29570005EBDD /* GoldFlowerNode.swift */; };
 		7DAB120523A2400600D50F83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB120423A2400600D50F83 /* AppDelegate.swift */; };
 		7DAB120B23A2400600D50F83 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB120A23A2400600D50F83 /* GameScene.swift */; };
 		7DAB120D23A2400600D50F83 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAB120C23A2400600D50F83 /* GameViewController.swift */; };
@@ -20,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		7D101F2A23AC6FCD009140F7 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		7DAA6F3223AF292A0005EBDD /* NormalFlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalFlowerNode.swift; sourceTree = "<group>"; };
+		7DAA6F3423AF29370005EBDD /* FlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerNode.swift; sourceTree = "<group>"; };
+		7DAA6F3623AF29570005EBDD /* GoldFlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldFlowerNode.swift; sourceTree = "<group>"; };
 		7DAB120123A2400600D50F83 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAB120423A2400600D50F83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DAB120A23A2400600D50F83 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -43,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DAA6F3123AF29080005EBDD /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				7DAA6F3223AF292A0005EBDD /* NormalFlowerNode.swift */,
+				7DAA6F3423AF29370005EBDD /* FlowerNode.swift */,
+				7DAA6F3623AF29570005EBDD /* GoldFlowerNode.swift */,
+			);
+			path = Node;
+			sourceTree = "<group>";
+		};
 		7DAB11F823A2400600D50F83 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +78,7 @@
 		7DAB120323A2400600D50F83 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				7DAA6F3123AF29080005EBDD /* Node */,
 				7DAB120423A2400600D50F83 /* AppDelegate.swift */,
 				7DAB120A23A2400600D50F83 /* GameScene.swift */,
 				7DAB120C23A2400600D50F83 /* GameViewController.swift */,
@@ -150,9 +167,12 @@
 			files = (
 				7DAB121D23A2488200D50F83 /* ObjectFacory.swift in Sources */,
 				7DAB120B23A2400600D50F83 /* GameScene.swift in Sources */,
+				7DAA6F3723AF29570005EBDD /* GoldFlowerNode.swift in Sources */,
 				7DAB120D23A2400600D50F83 /* GameViewController.swift in Sources */,
 				7DAB120523A2400600D50F83 /* AppDelegate.swift in Sources */,
 				7D101F2B23AC6FCD009140F7 /* Score.swift in Sources */,
+				7DAA6F3523AF29370005EBDD /* FlowerNode.swift in Sources */,
+				7DAA6F3323AF292A0005EBDD /* NormalFlowerNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

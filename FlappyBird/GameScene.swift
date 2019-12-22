@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-let defaultCountdown = 60
+let defaultCountdown = 30
 
 class GameScene: SKScene {
     
@@ -152,13 +152,15 @@ extension GameScene: SKPhysicsContactDelegate {
         
         
         if bodyA.categoryBitMask == CollisionBitMask.bird && bodyB.categoryBitMask == CollisionBitMask.flower {
-            addScore()
+            let b = bodyB.node is GoldFlowerNode ? 10 : 1
+            addScore(num: b)
             bodyB.node?.removeFromParent()
             return
         }
         
         if bodyA.categoryBitMask == CollisionBitMask.flower && bodyB.categoryBitMask == CollisionBitMask.bird {
-            addScore()
+            let b = bodyA.node is GoldFlowerNode ? 10 : 1
+            addScore(num: b)
             bodyA.node?.removeFromParent()
             return
         }
@@ -197,9 +199,9 @@ extension GameScene: SKPhysicsContactDelegate {
         self.addChild(resetButtton)
     }
     
-    private func addScore() {
+    private func addScore(num : Int = 1) {
         run(coinSound)
-        score += 1
+        score += num
     }
 }
 
@@ -213,15 +215,21 @@ extension GameScene {
         
         createFlows()
         
+        timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.makeCountdown()
         }
     }
     
     private func createFlows() {
+        createNormalFlows()
+        createGoldFlows()
+    }
+    
+    private func createNormalFlows() {
         let spawn = SKAction.run {
             let a = Int.random(in: 20 ..< Int(self.frame.maxY - 20))
-            let flow = self.objetctFactory.createFlower(point: CGPoint(x:self.frame.maxX + 40, y: CGFloat(a)))
+            let flow = NormalFlowerNode(point: CGPoint(x:self.frame.maxX + 40, y: CGFloat(a)))
             self.addChild(flow)
             
             flow.run(self.moveAndRemove)
@@ -236,6 +244,26 @@ extension GameScene {
         let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.006 * distance))
         let removePipes = SKAction.removeFromParent()
         moveAndRemove = SKAction.sequence([movePipes, removePipes])
+    }
+    
+    private func createGoldFlows() {
+        let distance = CGFloat(self.frame.width + 40)
+        let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.004 * distance))
+        let removePipes = SKAction.removeFromParent()
+        let moveAndRemove = SKAction.sequence([movePipes, removePipes])
+        
+        let spawn = SKAction.run {
+            let a = Int.random(in: 20 ..< Int(self.frame.maxY - 20))
+            let flow = GoldFlowerNode(point: CGPoint(x:self.frame.maxX + 40, y: CGFloat(a)))
+            self.addChild(flow)
+            
+            flow.run(moveAndRemove)
+        }
+        
+        let delay = SKAction.wait(forDuration: 3)
+        let SpawnDelay = SKAction.sequence([spawn, delay])
+        let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
+        self.run(spawnDelayForever)
     }
     
     func doBirdFly() {
