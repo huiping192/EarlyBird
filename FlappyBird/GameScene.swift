@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var bird = SKSpriteNode()
     let birdAtlas = SKTextureAtlas(named:"player")
     var birdSprites = [SKTexture]()
+    var pauseBtn = SKSpriteNode()
 
         
     // sound
@@ -99,9 +100,23 @@ class GameScene: SKScene {
         
         for touch in touches{
             let location = touch.location(in: self)
-            if birdIsDied == true {
+            if birdIsDied {
                 if resetButtton.contains(location){
                     restartScene()
+                }
+            } else {
+                if pauseBtn.contains(location){
+                    if self.isPaused == false{
+                        self.isPaused = true
+                        self.timer?.invalidate()
+                        pauseBtn.texture = SKTexture(imageNamed: "play")
+                    } else {
+                        self.isPaused = false
+                        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                            self.makeCountdown()
+                        }
+                        pauseBtn.texture = SKTexture(imageNamed: "pause")
+                    }
                 }
             }
         }
@@ -184,6 +199,8 @@ extension GameScene: SKPhysicsContactDelegate {
             self.removeAllActions()
         }))
         
+        pauseBtn.removeFromParent()
+        
         timer?.invalidate()
         
         Score.registerScore(score)
@@ -215,6 +232,8 @@ extension GameScene {
         
         createFlows()
         
+        createPauseBtn()
+        
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.makeCountdown()
@@ -224,6 +243,14 @@ extension GameScene {
     private func createFlows() {
         createNormalFlows()
         createGoldFlows()
+    }
+    
+    private func createPauseBtn() {
+        let button = objetctFactory.createPauseBtn(point: CGPoint(x: self.frame.width - 30, y: 30))
+        
+        self.addChild(button)
+        
+        self.pauseBtn = button
     }
     
     private func createNormalFlows() {

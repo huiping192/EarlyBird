@@ -103,4 +103,13 @@ struct ObjectFactory {
         
         return restartBtn
     }
+    
+    func createPauseBtn(point: CGPoint) -> SKSpriteNode {
+        let pauseBtn = SKSpriteNode(imageNamed: "pause")
+        pauseBtn.size = CGSize(width:40, height:40)
+        pauseBtn.position = point
+        pauseBtn.zPosition = 6
+        
+        return pauseBtn
+    }
 }
