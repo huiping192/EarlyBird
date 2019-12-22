@@ -167,21 +167,19 @@ extension GameScene: SKPhysicsContactDelegate {
         
         
         if bodyA.categoryBitMask == CollisionBitMask.bird && bodyB.categoryBitMask == CollisionBitMask.flower {
-            let b = bodyB.node is GoldFlowerNode ? 10 : 1
-            addScore(num: b)
+            doScoreCalculation(scorable: bodyB.node as? Scorable)
             bodyB.node?.removeFromParent()
             return
         }
         
         if bodyA.categoryBitMask == CollisionBitMask.flower && bodyB.categoryBitMask == CollisionBitMask.bird {
-            let b = bodyA.node is GoldFlowerNode ? 10 : 1
-            addScore(num: b)
+            doScoreCalculation(scorable: bodyA.node as? Scorable)
             bodyA.node?.removeFromParent()
             return
         }
-         
-        
     }
+    
+    
     
     func didEnd(_ contact: SKPhysicsContact) {
         
@@ -216,6 +214,13 @@ extension GameScene: SKPhysicsContactDelegate {
         self.addChild(resetButtton)
     }
     
+    private func doScoreCalculation(scorable: Scorable?) {
+        guard let scoreNum = scorable?.scoreNum, scoreNum != 0 else {
+            return
+        }
+        run(coinSound)
+        score += scoreNum
+    }
     private func addScore(num : Int = 1) {
         run(coinSound)
         score += num

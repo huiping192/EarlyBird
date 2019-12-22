@@ -32,3 +32,9 @@ class NormalFlowerNode: FlowerNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension NormalFlowerNode: Scorable {
+    var scoreNum: Int {
+        return 1
+    }
+}

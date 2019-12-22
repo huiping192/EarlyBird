@@ -32,3 +32,9 @@ class GoldFlowerNode: FlowerNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension GoldFlowerNode: Scorable {
+    var scoreNum: Int {
+        return 10
+    }
+}

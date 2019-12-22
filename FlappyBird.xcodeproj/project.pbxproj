@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D101F2B23AC6FCD009140F7 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D101F2A23AC6FCD009140F7 /* Score.swift */; };
+		7DA5A1B023AF5E3B00B15546 /* Scorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA5A1AF23AF5E3B00B15546 /* Scorable.swift */; };
 		7DAA6F3323AF292A0005EBDD /* NormalFlowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA6F3223AF292A0005EBDD /* NormalFlowerNode.swift */; };
 		7DAA6F3523AF29370005EBDD /* FlowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA6F3423AF29370005EBDD /* FlowerNode.swift */; };
 		7DAA6F3723AF29570005EBDD /* GoldFlowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA6F3623AF29570005EBDD /* GoldFlowerNode.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		7D101F2A23AC6FCD009140F7 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		7DA5A1AF23AF5E3B00B15546 /* Scorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scorable.swift; sourceTree = "<group>"; };
 		7DAA6F3223AF292A0005EBDD /* NormalFlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalFlowerNode.swift; sourceTree = "<group>"; };
 		7DAA6F3423AF29370005EBDD /* FlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerNode.swift; sourceTree = "<group>"; };
 		7DAA6F3623AF29570005EBDD /* GoldFlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldFlowerNode.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DA5A1AE23AF5E1900B15546 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7DA5A1AF23AF5E3B00B15546 /* Scorable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7DAA6F3123AF29080005EBDD /* Node */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		7DAB120323A2400600D50F83 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				7DA5A1AE23AF5E1900B15546 /* Model */,
 				7DAA6F3123AF29080005EBDD /* Node */,
 				7DAB120423A2400600D50F83 /* AppDelegate.swift */,
 				7DAB120A23A2400600D50F83 /* GameScene.swift */,
@@ -165,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DA5A1B023AF5E3B00B15546 /* Scorable.swift in Sources */,
 				7DAB121D23A2488200D50F83 /* ObjectFacory.swift in Sources */,
 				7DAB120B23A2400600D50F83 /* GameScene.swift in Sources */,
 				7DAA6F3723AF29570005EBDD /* GoldFlowerNode.swift in Sources */,
