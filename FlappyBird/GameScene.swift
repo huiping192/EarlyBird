@@ -234,8 +234,8 @@ extension GameScene {
             
             flow.run(self.moveAndRemove)
         }
-        
-        let delay = SKAction.wait(forDuration: 0.5)
+        let randomTime = Float.random(in: 0.2..<0.5)
+        let delay = SKAction.wait(forDuration: TimeInterval(randomTime))
         let SpawnDelay = SKAction.sequence([spawn, delay])
         let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
         self.run(spawnDelayForever)
