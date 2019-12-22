@@ -112,4 +112,16 @@ struct ObjectFactory {
         
         return pauseBtn
     }
+    
+    func createBestScoreLabel(point: CGPoint) -> SKLabelNode {
+        let label = SKLabelNode()
+        label.position = point
+        label.text = ""
+        label.zPosition = 5
+        label.fontSize = 20
+        label.fontName = "HelveticaNeue-Bold"
+        label.fontColor = .yellow
+        
+        return label
+    }
 }

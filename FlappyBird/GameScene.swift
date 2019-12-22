@@ -18,7 +18,7 @@ class GameScene: SKScene {
     let birdAtlas = SKTextureAtlas(named:"player")
     var birdSprites = [SKTexture]()
     var pauseBtn = SKSpriteNode()
-
+    var bestScoreLabel = SKLabelNode()
         
     // sound
     let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
@@ -353,6 +353,11 @@ extension GameScene {
         counterLbl = objetctFactory.createCounterLabel(point: CGPoint(x: self.frame.width - 50, y: self.frame.height - 30))
         counterLbl.text = "\(countdown)"
         self.addChild(counterLbl)
+        
+        let bestScoreLabel = objetctFactory.createBestScoreLabel(point: CGPoint(x: 50, y: self.frame.height - 30))
+        bestScoreLabel.text = "\(Score.bestScore)"
+        self.addChild(bestScoreLabel)
+        self.bestScoreLabel = bestScoreLabel
     }
     
     
