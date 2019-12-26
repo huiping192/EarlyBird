@@ -204,9 +204,7 @@ extension GameScene: SKPhysicsContactDelegate {
         Score.registerScore(score)
         bestScoreLabel.text = "\(Score.bestScore)"
         
-        showResetButton()
-        
-        showResult()
+        showResetButton()        
     }
     
     private func showResetButton() {
@@ -318,6 +316,17 @@ extension GameScene {
 
 extension GameScene {
     func createScene() {
+        configureSecne()
+        createBackground()
+       
+        createBird()
+        
+        createScoreLable()
+        createConterLabel()
+        createBestScoreLabel()
+    }
+    
+    private func configureSecne() {
         self.name = "area"
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsBody?.categoryBitMask = CollisionBitMask.ground
@@ -327,8 +336,11 @@ extension GameScene {
         self.physicsBody?.affectedByGravity = false
         
         self.physicsWorld.contactDelegate = self
-        self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         
+        self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
+    }
+    
+    private func createBackground() {
         for i in 0..<2 {
             let background = SKSpriteNode(imageNamed: "bg")
             background.anchorPoint = CGPoint.init(x: 0, y: 0)
@@ -337,7 +349,9 @@ extension GameScene {
             background.size = (self.view?.bounds.size)!
             self.addChild(background)
         }
-        
+    }
+    
+    private func createBird() {
         //SET UP THE BIRD SPRITES FOR ANIMATION
         birdSprites.append(birdAtlas.textureNamed("bird1"))
         birdSprites.append(birdAtlas.textureNamed("bird2"))
@@ -350,24 +364,28 @@ extension GameScene {
         //ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
         let animatebird = SKAction.animate(with: self.birdSprites, timePerFrame: 0.1)
         self.repeatActionbird = SKAction.repeatForever(animatebird)
-        
-        scoreLbl = objetctFactory.createScoreLabel(point: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 2.6))
+    }
+    
+    private func createScoreLable() {
+        let scoreLbl = objetctFactory.createScoreLabel(point: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 2.6))
         scoreLbl.text = "\(score)"
         self.addChild(scoreLbl)
         
-        
-        counterLbl = objetctFactory.createCounterLabel(point: CGPoint(x: self.frame.width - 50, y: self.frame.height - 30))
+        self.scoreLbl = scoreLbl
+    }
+    
+    private func createConterLabel() {
+        let counterLbl = objetctFactory.createCounterLabel(point: CGPoint(x: self.frame.width - 50, y: self.frame.height - 30))
         counterLbl.text = "\(countdown)"
         self.addChild(counterLbl)
         
+        self.counterLbl = counterLbl
+    }
+    
+    private func createBestScoreLabel() {
         let bestScoreLabel = objetctFactory.createBestScoreLabel(point: CGPoint(x: 50, y: self.frame.height - 30))
         bestScoreLabel.text = "\(Score.bestScore)"
         self.addChild(bestScoreLabel)
         self.bestScoreLabel = bestScoreLabel
-    }
-    
-    
-    func showResult() {
-        
     }
 }
