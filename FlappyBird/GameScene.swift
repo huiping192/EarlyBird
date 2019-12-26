@@ -202,6 +202,7 @@ extension GameScene: SKPhysicsContactDelegate {
         timer?.invalidate()
         
         Score.registerScore(score)
+        bestScoreLabel.text = "\(Score.bestScore)"
         
         showResetButton()
         
