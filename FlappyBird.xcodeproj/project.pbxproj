@@ -28,7 +28,7 @@
 		7DAA6F3223AF292A0005EBDD /* NormalFlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalFlowerNode.swift; sourceTree = "<group>"; };
 		7DAA6F3423AF29370005EBDD /* FlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerNode.swift; sourceTree = "<group>"; };
 		7DAA6F3623AF29570005EBDD /* GoldFlowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldFlowerNode.swift; sourceTree = "<group>"; };
-		7DAB120123A2400600D50F83 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DAB120123A2400600D50F83 /* EarlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAB120423A2400600D50F83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DAB120A23A2400600D50F83 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		7DAB120C23A2400600D50F83 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		7DAB120223A2400600D50F83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7DAB120123A2400600D50F83 /* FlappyBird.app */,
+				7DAB120123A2400600D50F83 /* EarlyBird.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 			);
 			name = FlappyBird;
 			productName = FlappyBird;
-			productReference = 7DAB120123A2400600D50F83 /* FlappyBird.app */;
+			productReference = 7DAB120123A2400600D50F83 /* EarlyBird.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -337,8 +337,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huiping.FlappyBird;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huiping.EarlyBird;
+				PRODUCT_NAME = EarlyBird;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,8 +355,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huiping.FlappyBird;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huiping.EarlyBird;
+				PRODUCT_NAME = EarlyBird;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
